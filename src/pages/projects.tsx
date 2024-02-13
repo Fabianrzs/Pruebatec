@@ -32,7 +32,7 @@ export default function Projects() {
       </div>
 
       <div className={"row justify-content-center"}>
-        {projects.map(({ id, name, descriptions, end, start }, index) =>
+        {projects && projects.map(({ id, name, descriptions, end, start }, index) =>
           <div key={index} className={"col-4"}>
             <Project key={index} id={id} title={name} description={descriptions} end={end} start={start} />
           </div>)}

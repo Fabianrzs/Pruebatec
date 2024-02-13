@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../context/TaskContext";
-import CardNote from "../component/CardProject";
+import CardTask from "../component/CardTask";
 import Alert from "../component/common/Alert";
 import Button from "../component/common/Button";
 import { AuthContext } from "../context/AuthContext";
 import { useParams, useNavigate } from 'react-router-dom';
+import Task from "../component/Task";
 
 
-export default function Task() {
+export default function Tasks() {
 
   const { tasks, getAllTasks } = useContext(TaskContext)
   const { logOut } = useContext(AuthContext)
@@ -30,10 +31,15 @@ export default function Task() {
       <Alert />
       <div className={"row justify-content-center p-5 m-3"}>
         {!register ? <input className={"form-control  border-1"}
-          placeholder={"Crea una nota..."}
-          onClick={() => setRegister(true)} /> : <CardNote cancel={() => setRegister(false)} />}
+          placeholder={"Crea una Tarea..."}
+          onClick={() => setRegister(true)} /> : <CardTask projectId={projectId} cancel={() => setRegister(false)} />}
       </div>
-
+      <div className={"row justify-content-center"}>
+        {tasks.map(({ id, name, description }, index) =>
+          <div key={index} className={"col-4"}>
+            <Task key={index} id={id} title={name} description={description} />
+          </div>)}
+      </div>
 
     </div>
   )

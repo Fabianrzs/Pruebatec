@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useReducer } from "react";
 import { Task } from "../models/Task";
 import { taskReducer, TaskState } from "../store/reducer/Task";
 import taskServices from "../services/TaskService";
+import { useParams, useNavigate } from 'react-router-dom';
 
 type TaskContextProps = {
   tasks: Task[];
@@ -24,6 +25,8 @@ export const TaskContext = createContext({} as TaskContextProps);
 
 export const TaskProvider = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 
+  const { projectId } = useParams(); // Obtenemos el parámetro "projectId" de la URL
+
   const [taskState, taskDispatch] = useReducer(taskReducer, initialTaskState);
 
   const { getAll, create, unavilitable, update } = taskServices;
@@ -43,7 +46,7 @@ export const TaskProvider = ({ children }: { children: JSX.Element | JSX.Element
   };
 
   const createTaskHandler = async (task: Task) => {
-    //task.idProject = getUserId();
+    console.log(task);
     try {
       const response = await create(task);
       taskDispatch({ type: "add", payload: { task: response } });
