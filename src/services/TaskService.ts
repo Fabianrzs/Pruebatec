@@ -6,7 +6,7 @@ const { apiGet, apiPost, apiPut, apiDelete } = api;
 export default {
   async getAll(projectId: string): Promise<Task[]> {
     try {
-      const request = await apiGet<Task[]>(`${taskControllers}/${projectId}/tasks`);
+      const request = await apiGet<Task[]>(`${taskControllers}${projectId}`);
       return request.data;
     } catch (error) {
       console.error("Error fetching tasks:", error);

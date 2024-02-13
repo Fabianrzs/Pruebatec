@@ -93,6 +93,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element
         }
       });
       localStorage.setItem('localSesion', JSON.stringify(response));
+      navigate("/Project")
     } catch (e: any) {
       dispatch({ type: "addError", payload: { error: e.err.response.data } })
     }

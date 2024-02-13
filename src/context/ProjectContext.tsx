@@ -2,6 +2,8 @@ import React, { createContext, useEffect, useReducer } from "react";
 import { Project } from "../models/Project";
 import { projectReducer, ProjectState } from "../store/reducer/Project";
 import projectServices from "../services/ProjectService";
+import { getUserId } from "../services/storage";
+import { log } from "console";
 
 type ProjectContextProps = {
   projects: Project[];
@@ -35,7 +37,8 @@ export const ProjectProvider = ({ children }: { children: JSX.Element | JSX.Elem
 
   const getAllProjectsHandler = async () => {
     try {
-      const response = await getAll();
+      var id = getUserId()
+      const response = await getAll(id);
       projectDispatch({ type: "getAll", payload: { projects: response } });
     } catch (error: any) {
 
@@ -45,6 +48,9 @@ export const ProjectProvider = ({ children }: { children: JSX.Element | JSX.Elem
 
   const createProjectHandler = async (project: Project) => {
     try {
+      console.log(project);
+      var id = getUserId()
+      project.owner = id;
       const response = await create(project);
       projectDispatch({ type: "add", payload: { project: response } });
     } catch (error: any) {

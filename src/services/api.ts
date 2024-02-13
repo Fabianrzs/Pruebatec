@@ -4,7 +4,7 @@ import { Request } from "../models/Request";
 export const userControllers = "User/"
 export const todoListControllers = "Note/"
 export const taskControllers = "Task/"
-export const projectControllers = "Proyect/"
+export const projectControllers = "Project/"
 
 const baseUrl = 'https://localhost:5001/api'
 
@@ -18,7 +18,7 @@ const api = axios.create({ baseURL: baseUrl, headers: headers })
 export default {
   async apiGet<TEntity>(path: string, body?: {}): Promise<Request<TEntity>> {
     try {
-      return await api.get(path, body)
+      return (await api.get(path, body)).data
     } catch (err) {
       console.log(err);
       throw { err }
@@ -27,7 +27,7 @@ export default {
   async apiPost<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
       console.log(body)
-      return await api.post(path, body)
+      return (await api.post(path, body)).data
     } catch (err) {
       console.log(err);
       throw { err }
@@ -35,7 +35,7 @@ export default {
   },
   async apiPut<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
-      return await api.put(path, body)
+      return (await api.put(path, body)).data
     } catch (err) {
       console.log(err);
       throw { err }
@@ -43,7 +43,7 @@ export default {
   },
   async apiPatch<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
-      return await api.patch(path, body)
+      return (await api.patch(path, body)).data
     } catch (err) {
       console.log(err);
       throw { err }
@@ -51,7 +51,7 @@ export default {
   },
   async apiDelete<TEntity>(path: string, body?: {}): Promise<Request<TEntity>> {
     try {
-      return await api.delete(path, body)
+      return (await api.delete(path, body)).data
     } catch (err) {
       console.log(err);
       throw { err }

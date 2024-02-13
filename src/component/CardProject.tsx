@@ -4,25 +4,32 @@ import { useForm } from "react-hook-form";
 import Input from "./common/Input";
 import { ProjectContext } from "../context/ProjectContext";
 
-export default function CardNote({ cancel }: any) {
+export default function CardProject({ cancel }: any) {
 
-  const { addProjectError } = useContext(ProjectContext)
+  const { createProject } = useContext(ProjectContext)
 
   const formMethods = useForm({
     mode: "onBlur", defaultValues: {
-      title: '',
-      description: ''
+      name: '',
+      descriptions: '',
+      owner: '',
+      start: '',
+      end: '',
     }
   })
 
   const children = <>
-    <Input placeholder={"Titulo"} id={"title"}
-      name={"title"} type={"text"} />
-    <Input placeholder={"Descripcion"} id={"description"}
-      name={"description"} type={"text"} textArea />
+    <Input placeholder={"Name"} id={"name"}
+      name={"name"} type={"text"} />
+    <Input placeholder={"Descripcion"} id={"descriptions"}
+      name={"descriptions"} type={"text"} textArea />
+    <Input placeholder={"Start"} id={"start"}
+      name={"start"} type={"date"} />
+    <Input placeholder={"End"} id={"end"}
+      name={"end"} type={"date"} />
   </>
   return (
     <Form formMethods={formMethods} id={"formTodoList"} close onSubmitClose={cancel}
-      onSubmit={addProjectError} btnText={"Guardar"} children={children} />
+      onSubmit={createProject} btnText={"Guardar"} children={children} />
   )
 }

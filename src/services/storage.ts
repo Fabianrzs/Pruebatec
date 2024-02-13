@@ -1,6 +1,6 @@
 import { User } from "../models/User";
 
-export default function getUserId(): string | undefined {
+export const getUserId = (): string => {
   const user = JSON.parse(localStorage.getItem("localSesion") || "") as User
-  return user.id
+  return user.id ?? ''
 }

@@ -22,7 +22,7 @@ export default function Routes() {
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/Task:projectId" element={<Tasks />} />
+            <Route path="/Task/:projectId" element={<Tasks />} />
             <Route path="/Project" element={<Projects />} />
           </Switch>
         </AppState>
