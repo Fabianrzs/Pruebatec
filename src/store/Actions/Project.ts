@@ -4,7 +4,7 @@ import { Project } from "../../models/Project";
 export type ProjectAction =
   | { type: 'getAll', payload: { projects: Project[] } }
   | { type: 'add', payload: { project: Project | null } }
-  | { type: 'delete', payload: { projects: Project[] } }
+  | { type: 'delete', payload: { projectId: string } }
   | { type: 'update', payload: { projects: (Project | null)[] } }
   | { type: 'addError', payload: { error: string } }
   | { type: 'removeError', payload: any };

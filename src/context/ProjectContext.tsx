@@ -60,9 +60,10 @@ export const ProjectProvider = ({ children }: { children: JSX.Element | JSX.Elem
 
   const deleteProjectHandler = async (projectId: string) => {
     try {
-      await deleteProject(projectId);
+      //await deleteProject(projectId);
       const newProjects = projects.filter(proj => proj.id !== projectId);
-      projectDispatch({ type: "delete", payload: { projects: newProjects } });
+      console.log(newProjects, projectId);
+      projectDispatch({ type: "delete", payload: { projectId } });
     } catch (error: any) {
       projectDispatch({ type: "addError", payload: { error: error.err.response.data } });
     }

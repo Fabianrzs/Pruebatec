@@ -57,9 +57,9 @@ export const TaskProvider = ({ children }: { children: JSX.Element | JSX.Element
 
   const deleteTaskHandler = async (taskId: string) => {
     try {
-      await unavilitable(taskId);
-      const newTasks = tasks.filter(task => task.id !== taskId);
-      taskDispatch({ type: "delete", payload: { tasks: newTasks } });
+      //await unavilitable(taskId);
+      //const newTasks = tasks.filter(task => task.id !== taskId);
+      taskDispatch({ type: "delete", payload: { taskId } });
     } catch (error: any) {
       taskDispatch({ type: "addError", payload: { error: error.err.response.data } });
     }
