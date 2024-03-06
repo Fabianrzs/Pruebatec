@@ -49,6 +49,7 @@ export const TaskProvider = ({ children }: { children: JSX.Element | JSX.Element
     console.log(task);
     try {
       const response = await create(task);
+      console.log("response", response);
       taskDispatch({ type: "add", payload: { task: response } });
     } catch (error: any) {
       taskDispatch({ type: "addError", payload: { error: error.err.response.data } });

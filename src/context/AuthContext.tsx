@@ -61,7 +61,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element
       dispatch({
         type: 'signUp',
         payload: {
-          token: data,
+          token: '',
           user: data
         }
       })
@@ -85,6 +85,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element | JSX.Element
   const signIn = async (data: User) => {
     try {
       const response = await login(data)
+      console.log(response);
       dispatch({
         type: 'signUp',
         payload: {

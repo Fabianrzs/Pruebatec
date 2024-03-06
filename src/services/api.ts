@@ -27,7 +27,7 @@ export default {
   async apiPost<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
       console.log(body)
-      return (await api.post(path, body)).data
+      return (await api.post(path, body))
     } catch (err) {
       console.log(err);
       throw { err }
@@ -35,7 +35,7 @@ export default {
   },
   async apiPut<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
-      return (await api.put(path, body)).data
+      return (await api.put(path, body))
     } catch (err) {
       console.log(err);
       throw { err }
@@ -43,7 +43,7 @@ export default {
   },
   async apiPatch<TEntity>(path: string, body: TEntity): Promise<Request<TEntity>> {
     try {
-      return (await api.patch(path, body)).data
+      return (await api.patch(path, body))
     } catch (err) {
       console.log(err);
       throw { err }
@@ -51,7 +51,7 @@ export default {
   },
   async apiDelete<TEntity>(path: string, body?: {}): Promise<Request<TEntity>> {
     try {
-      return (await api.delete(path, body)).data
+      return (await api.delete(path, body))
     } catch (err) {
       console.log(err);
       throw { err }

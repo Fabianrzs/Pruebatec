@@ -17,8 +17,8 @@ export default {
   async create(project: Project): Promise<Project | null> {
     try {
       console.log("Creating project", project);
-      const request = await apiPost<Project>(`${projectControllers}`, project);
-      return request.data;
+      const request = await apiPost<any>(`${projectControllers}`, project);
+      return request.data.data;
     } catch (error) {
       console.error("Error creating project:", error);
       return null;

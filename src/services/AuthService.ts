@@ -5,6 +5,7 @@ const { apiPost } = api
 export default {
   async login(data: User) {
     const request = await apiPost<User>(`Oauth/Token`, data)
+    console.log("request",request)
     return request.data
   },
   async register(data: User) {

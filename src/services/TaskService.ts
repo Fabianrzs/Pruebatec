@@ -16,8 +16,8 @@ export default {
 
   async create(task: Task): Promise<Task | null> {
     try {
-      const request = await apiPost<Task>(`${taskControllers}`, task);
-      return request.data;
+      const request = await apiPost<any>(`${taskControllers}`, task);
+      return request.data?.data;
     } catch (error) {
       console.error("Error creating task:", error);
       return null;
